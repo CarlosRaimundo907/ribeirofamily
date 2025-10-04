@@ -1,4 +1,4 @@
-<!-- src/a´pp/app.html -->
+<!-- src/app/app.html -->
 
 <div class="d-flex flex-column min-vh-100">
   <!-- navbar para telas "md" e superiores, colapsado -->
@@ -12,19 +12,21 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link" routerLink="/home">Início</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/new">Novo</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/contacts">Contatos</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/about">Sobre</a></li>
           <li class="nav-item">
 
-              @if (authService.user$ | async; as user) {
-              <a class="nav-link" (click)="confirmLogout()">
-                <img [src]="user.photoURL" class="rounded-circle" width="32" height="32" [alt]="user.displayName" />
-              </a>
-              } @else {
-              <a class="nav-link" (click)="authService.loginWithGoogle()">
-                <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
-              </a>
-              }
+            @if (authService.user$ | async; as user) {
+            <a class="nav-link" (click)="confirmLogout()">
+              <img [src]="user.photoURL" class="rounded-circle" width="32" height="32" [alt]="user.displayName"
+                   [title]="user.displayName" referrerpolicy="no-referrer" />
+            </a>
+            } @else {
+            <a class="nav-link" (click)="authService.loginWithGoogle()">
+              <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+            </a>
+            }
 
           </li>
         </ul>
@@ -44,6 +46,8 @@
       <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         <li class="nav-item"><a class="nav-link ps-2" routerLink="/home"><i class="bi bi-house-fill pe-2"
                style="font-size: 1.2rem"></i>Início</a></li>
+               <li class="nav-item"><a class="nav-link ps-2" routerLink="/new"><i class="bi bi-house-fill pe-2"
+               style="font-size: 1.2rem"></i>Novo</a></li>
         <li class="nav-item"><a class="nav-link ps-2" routerLink="/contacts"><i class="bi bi-chat-dots-fill pe-2"
                style="font-size: 1.2rem"></i>Contatos</a></li>
         <li class="nav-item"><a class="nav-link ps-2" routerLink="/about"><i class="bi bi-info-circle-fill pe-2"
@@ -57,13 +61,15 @@
         <li class="nav-item">
 
           @if (authService.user$ | async; as user) {
-          <a class="nav-link" (click)="confirmLogout()" data-bs-dismiss="offcanvas">
-            <img [src]="user.photoURL" class="rounded-circle me-2" width="32" height="32" [alt]="user.displayName" />
+          <a class="nav-link ps-2 d-flex align-items-center" (click)="confirmLogout()" data-bs-dismiss="offcanvas">
+            <img [src]="user.photoURL" class="rounded-circle me-2" width="32" height="32" [alt]="user.displayName"
+                 [title]="user.displayName" referrerpolicy="no-referrer" />
             <span>{{ user.displayName }}</span>
           </a>
           } @else {
-          <a class="nav-link ps-2" (click)="authService.loginWithGoogle()" data-bs-dismiss="offcanvas">
-            <i class="bi bi-person-circle me-2" style="font-size: 1.2rem;"></i>
+          <a class="nav-link ps-2 d-flex align-items-center" (click)="authService.loginWithGoogle()"
+             data-bs-dismiss="offcanvas">
+            <i class="bi bi-person-circle me-2" style="font-size: 2rem;"></i>
             <span>Login</span>
           </a>
           }
@@ -73,7 +79,7 @@
     </div>
   </div>
 
-  <main class="container flex-grow-1">
+  <main class="container flex-grow-1 mt-3">
     <router-outlet></router-outlet>
   </main>
 
