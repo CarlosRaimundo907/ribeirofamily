@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+/* **BLOCO 2: CONTROLE DE ALTURA (CSS)** */
+
+.carrossel-reduzido .carousel-inner {
+    /* * Define a altura máxima do contêiner interno.
+     * Altere este valor (ex: 350px, 450px) para ajustar a altura do carrossel.
+     */
+    max-height: 400px; 
+    overflow: hidden; /* Corta qualquer conteúdo que ultrapasse 400px de altura */
+}
+
+.carrossel-reduzido .carousel-item img {
+    /* * Força a altura da imagem a ser a mesma do contêiner.
+     * O valor de 'height' aqui deve ser igual ao 'max-height' acima!
+     */
+    height: 400px; 
+    
+    /* * CRUCIAL: Mantém a proporção da imagem e centraliza, cortando as laterais
+     * que não couberem no espaço de 400px de altura.
+     */
+    object-fit: cover; 
+}
+
+/* **FIM DO BLOCO 2** */
